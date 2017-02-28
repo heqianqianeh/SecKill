@@ -1,0 +1,1 @@
+CALL mvn package -DskipTests
