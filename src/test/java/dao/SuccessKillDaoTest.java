@@ -32,7 +32,7 @@ public class SuccessKillDaoTest {
     }
 
     @Test
-    public void findById() throws Exception {
+    public void findSuccessKill() throws Exception {
         SuccessKill successKill = successKillDao.findSuccessKill(seckillId,999L);
         System.out.println(successKill);
         System.out.println(successKill.getSecKill());
