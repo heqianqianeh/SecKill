@@ -12,6 +12,11 @@ public class Exposer {
     private long startTime;
     private long endTime;
 
+    public Exposer(boolean expose, int seckillId) {
+        this.expose = expose;
+        this.seckillId = seckillId;
+    }
+
     public Exposer(boolean expose, int seckillId, String md5) {
         this.expose = expose;
         this.seckillId = seckillId;

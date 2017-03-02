@@ -2,6 +2,7 @@ package service.impl;
 
 import dao.SeckillDao;
 import dao.SuccessKillDao;
+import dao.cache.RedisDao;
 import dto.Execution;
 import dto.Exposer;
 import dto.Result;
@@ -35,6 +36,8 @@ public class SeckillServiceImpl implements SeckillService{
     private SeckillDao seckillDao;
     @Autowired
     private SuccessKillDao successKillDao;
+    @Autowired
+    private RedisDao redisDao;
 
     @Override
     public Seckill getById(int seckillId) {
@@ -49,7 +52,16 @@ public class SeckillServiceImpl implements SeckillService{
 
     @Override
     public Exposer exposeUrl(int seckillId) {
-        Seckill seckill = seckillDao.findById(seckillId);
+        //TODO redis数据优化
+        Seckill seckill = redisDao.getSeckill(seckillId);
+        if(seckill==null){
+            seckill = seckillDao.findById(seckillId);
+            if (seckill==null){
+                return new Exposer(false,seckillId);
+            }else{
+                redisDao.putSeckill(seckill);
+            }
+        }
         long currentTime = new Date().getTime();
         if (seckill.getStartTime().getTime()>currentTime
                 || seckill.getEndTime().getTime()<currentTime){//秒杀未开始或者已经结束
