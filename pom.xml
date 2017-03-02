@@ -33,7 +33,7 @@
 
 		<jstl.version>1.2</jstl.version>
 		<junit.version>4.10</junit.version>
-		<jackson.version>2.8.1</jackson.version>
+		<jackson.version>2.5.4</jackson.version>
 		<spring.version>4.3.6.RELEASE</spring.version>
 	</properties>
 	<dependencies>
@@ -94,12 +94,12 @@
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
+			<artifactId>jackson-core</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
+			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>

@@ -40,5 +40,5 @@ public interface SeckillService {
      * @param md5 消息加密
      * @return 秒杀结果
      */
-    Result<Execution> executeSeckill(int seckillId, long userphone, String md5);
+    Execution executeSeckill(int seckillId, long userphone, String md5);
 }

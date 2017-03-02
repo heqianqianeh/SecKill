@@ -20,6 +20,12 @@ public class Execution {
         this.successKill = successKill;
     }
 
+    public Execution(int seckillId,SeckillStateEnum seckillStateEnum) {
+        this.seckillId = seckillId;
+        this.state = seckillStateEnum.getState();
+        this.stateInfo = seckillStateEnum.getStateInfo();
+    }
+
     public int getSeckillId() {
         return seckillId;
     }

@@ -67,7 +67,7 @@ public class SeckillServiceImpl implements SeckillService{
 
     @Override
     @Transactional
-    public Result<Execution> executeSeckill(int seckillId, long userphone, String md5)
+    public Execution executeSeckill(int seckillId, long userphone, String md5)
             throws SeckillException, SeckillCloseException, SeckillRepeatException{
         //核对md5
         if(md5==null||!md5.equals(getMD5(seckillId))){
@@ -86,8 +86,7 @@ public class SeckillServiceImpl implements SeckillService{
                 }
                 //返回秒杀结果
                 SuccessKill successKill = successKillDao.findSuccessKill(seckillId,userphone);
-                Execution execution = new Execution(seckillId, SeckillStateEnum.SUCCESS,successKill);
-                return new Result<Execution>(true,execution);
+                return new Execution(seckillId, SeckillStateEnum.SUCCESS,successKill);
             }
         }catch (SeckillRepeatException e1){
             throw e1;

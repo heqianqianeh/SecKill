@@ -50,9 +50,20 @@ public class SeckillServiceImplTest {
     @Test
     public void executeSeckill() throws Exception {
         String md5 = "5161826e7f2e9b4eaf4675b7916aa51d";
-        Result<Execution> executionResult = seckillService.executeSeckill(1,16611,md5);
-        System.out.println(executionResult.getData());
+        Execution execution = seckillService.executeSeckill(1,16611,md5);
+        System.out.println(execution);
+    }
 
+    @Test
+    public void testSeckill(){
+        int seckillId = 2;
+        long userPhone = 9992222;
+        Exposer exposer = seckillService.exposeUrl(seckillId);
+        if(exposer!=null){
+            String md5 = exposer.getMd5();
+            Execution execution = seckillService.executeSeckill(seckillId,userPhone,md5);
+            System.out.println(execution);
+        }
     }
 
 }
